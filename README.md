@@ -249,7 +249,7 @@ GROUP BY member_casual
 | casual| 2059179 | 0 | 98489 | 27.76 |
 
 
-<img src="https://github.com/rides_per_user_type.pdf" width="48">
+<img src="rides_per_rideable_type_casuals.png" width="50">
 [Visualization](rides_per_user_type.pdf)
 
 We can see that the number of annual members is larger than the number of casual users; however, the last ones use the bikes for longer time on average. There is also a very large ride made by a casual user. We will investigate that further.
