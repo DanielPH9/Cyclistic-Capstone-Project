@@ -248,4 +248,4 @@ GROUP BY member_casual
 | member | 3660698 | 0 | 1559 | 12.037 |
 | casual| 2059179 | 0 | 98489 | 27.76 |
 
-
+[View PDF](rides_per_user_type.pdf)
