@@ -217,6 +217,8 @@ FROM
     ORDER BY ride_length DESC
 ) AS t1
 WHERE t1.ride_length > 0
+
+</details>
 ```
 
 #### Observations: 
@@ -238,5 +240,6 @@ SELECT
 FROM city_bike_dataset_capstone.data_2023
 GROUP BY member_casual
 ```
-![image.png](attachment:7e61efb9-ae14-46fa-a9da-d69ce6ba2145.png)
+
+
 
