@@ -261,11 +261,13 @@ SELECT
   COUNT(ride_length) AS num_rides,
   MIN(ride_length) AS min_ride_duration,
   MAX(ride_length) AS max_ride_duration,
-  AVG(ride_length) AS average_ride_length
+  ROUND(AVG(ride_length),2) AS average_ride_length
 FROM city_bike_dataset_capstone.data_2023
 WHERE ride_length > 0
 GROUP BY rideable_type, member_casual
 ```
+
+##### Output:
 
 | rideable_type |	member_casual |	num_rides |	min_ride_duration |	max_ride_duration |	average_ride_length |
 |---------------|---------------|-----------|-------------------|-------------------|---------------------|
@@ -278,4 +280,51 @@ GROUP BY rideable_type, member_casual
 [Visualization for members](rides_per_rideable_type_members.pdf)
 
 [Visualization for casuals](rides_per_rideable_type_casuals.pdf)
+
+We can observe that the most popular type of bike among the casual users is the electric bike, followed by the classic one. In the case of the annual members they equally like both types of bikes. 
+As a remark we notice that the docked bikes are only used by casual users, and in less than 4% of their rides. 
+Another remark is that the longest ride of all the data was made by a casual user with a docked bike. 
+
+To explore the behaviour of the different users per month, we use the following:
+
+```SQL
+SELECT 
+  month,
+  member_casual,
+  COUNT(ride_length) AS num_rides,
+  ROUND(AVG(ride_length),2) AS average_ride_length
+FROM city_bike_dataset_capstone.data_2023
+WHERE ride_length > 0
+GROUP BY month, member_casual
+ORDER BY num_rides DESC
+```
+
+##### Output:
+
+|month|	member_casual|	num_rides|	average_ride_length|
+|-----|--------------|-----------|---------------------|
+|8|	member|	449587|	13.61|
+|7|	member|	424922|	13.56|
+|6	|member	|407789	|13.04|
+|9|	member|	396288|	12.93|
+|5|	member|	359580|	12.94|
+|10|	member|	352461|	11.91|
+|7|	casual|	322565|	32.71|
+|8|	casual|	303735|	35.60|
+|6|	casual|	293046|	29.73|
+|4|	member|	269086	|11.63|
+|11	|member	|258852|	11.31|
+|9	|casual	|255766	|25.26|
+|5	|casual	|227375|	28.87|
+|3	|member|	189322	|10.33|
+|10	|casual|	172959|	22.91|
+|12|	member|	168723|	11.20|
+|1|	member|	145276|	10.21|
+|2|	member|	142626|	10.57|
+|4|	casual|	142521|	28.09|
+|11|	casual|	96262|	19.83|
+|3|	casual|	60279|	21.59|
+|12|	casual|	50587|	19.86|
+|2|	casual|	41818|	23.36|
+|1|	casual|	38837|	23.10|
 
