@@ -275,4 +275,6 @@ GROUP BY rideable_type, member_casual
 |classic_bike|	member|	1790185	|1|	1559|	13.66|
 |docked_bike|	casual	|77574	|1|	98489|	184.0|
 
+[Visualization for members](rides_per_rideable_type_members.pdf)
+[Visualization for casuals](rides_per_rideable_type_casuals.pdf)
 
