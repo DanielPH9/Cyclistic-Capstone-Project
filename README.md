@@ -278,9 +278,8 @@ GROUP BY rideable_type, member_casual
 |classic_bike|	member|	1790185	|1|	1559|	13.66|
 |docked_bike|	casual	|77574	|1|	98489|	184.0|
 
-[Visualization for members](rides_per_rideable_type_members.pdf)
-
-[Visualization for casuals](rides_per_rideable_type_casuals.pdf)
+<img src="https://github.com/DanielPH9/Cyclistic-Capstone-Project/blob/main/rides_per_rideable_type_members.png" width="500"> 
+<img src="https://github.com/DanielPH9/Cyclistic-Capstone-Project/blob/main/rides_per_rideable_type_casuals.png" width="500">
 
 We can observe that the most popular type of bike among the casual users is the electric bike, followed by the classic one. In the case of the annual members they equally like both types of bikes. 
 As a remark we notice that the docked bikes are only used by casual users, and in less than 4% of their rides. 
