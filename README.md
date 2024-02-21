@@ -248,4 +248,31 @@ GROUP BY member_casual
 | member | 3660698 | 0 | 1559 | 12.037 |
 | casual| 2059179 | 0 | 98489 | 27.76 |
 
-[View PDF](rides_per_user_type.pdf)
+[Visualization](rides_per_user_type.pdf)
+
+We can see that the number of annual members is larger than the number of casual users; however, the last ones use the bikes for longer time on average. There is also a very large ride made by a casual user. We will investigate that further.
+
+Next, let's explore the type of bike preferred for each type of users:
+
+```SQL
+SELECT 
+  rideable_type,
+  member_casual,
+  COUNT(ride_length) AS num_rides,
+  MIN(ride_length) AS min_ride_duration,
+  MAX(ride_length) AS max_ride_duration,
+  AVG(ride_length) AS average_ride_length
+FROM city_bike_dataset_capstone.data_2023
+WHERE ride_length > 0
+GROUP BY rideable_type, member_casual
+```
+
+| rideable_type |	member_casual |	num_rides |	min_ride_duration |	max_ride_duration |	average_ride_length |
+|---------------|---------------|-----------|-------------------|-------------------|---------------------|
+|electric_bike|	member|	1774327|	1|	481|	11.05|
+|electric_bike|	casual|	1063621	|1|	480|	14.29|
+|classic_bike|	casual|	864555	|1|	1559|	32.02|
+|classic_bike|	member|	1790185	|1|	1559|	13.66|
+|docked_bike|	casual	|77574	|1|	98489|	184.0|
+
+
