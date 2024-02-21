@@ -391,7 +391,7 @@ LIMIT 2000
 
 In the previous map we can visualize the started locations of the rides. Some features of the map are:
 * Size of the Points: it is proportional to the number of rides initiated in those geographic coordinates. 
-* Color: it indicates the percentage of rides initiated by casual users (blue indicates more than 50% of trips are initiated by casual users).
+* Color: it indicates the percentage of rides initiated by casual users (blue indicates more than 50% of trips were initiated by casual users).
 * Arrow: it indicates the most popular starting point for casual users, that corresponds to the station "Streeter Dr & Grand Ave".
 
 In general, we can see that the stations that are closer to the coast are more popular among the casual users. Those locations away from the city are dominated by casual users as well, but from the size of the points we conclude that the number of users is quite small.
