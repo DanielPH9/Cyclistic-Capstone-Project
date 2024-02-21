@@ -328,3 +328,87 @@ ORDER BY num_rides DESC
 |2|	casual|	41818|	23.36|
 |1|	casual|	38837|	23.10|
 
+<img src="https://github.com/DanielPH9/Cyclistic-Capstone-Project/blob/main/rides_per_month.png">
+
+We can observe that the most popular months are when temperatures are more favorable for riding bikes. According to the visualization, the most popular months are from april to november, finding its peak in july-august. Also, we can observe that irrespective of the month, the annual members tend to ride their bikes for the same amount od time on average, but the casual users tend to use their bikes for longer time during august. 
+
+Let's explore what happens inside a week:
+
+```SQL
+SELECT 
+  day_of_week,
+  member_casual,
+  COUNT(ride_length) AS num_rides,
+  MIN(ride_length) AS min_ride_duration,
+  MAX(ride_length) AS max_ride_duration,
+  ROUND(AVG(ride_length),2) AS average_ride_length
+FROM city_bike_dataset_capstone.data_2023
+WHERE ride_length > 0
+GROUP BY day_of_week, member_casual
+ORDER BY num_rides DESC
+```
+
+##### Output:
+
+|day_of_week|	member_casual|	num_rides|	min_ride_duration|	max_ride_duration|	average_ride_length|
+|----|----|----|----|----|----|
+|5|	member|	573822|	1|	1499|	11.85|
+|4|	member|	571585|	1	|1499	|11.76|
+|3|	member|	561963|	1	|1499	|11.83|
+|6|	member|	517281|	1	|1499	|12.32|
+|2|	member|	481944|	1|	1499|	11.71|
+|7|	member|	459879|	1|	1559|	13.83|
+|7|	casual|	399905|	1|	64009|	32.5|
+|1|	member|	398038|	1|	1500|	13.87|
+|1|	casual|	326829|	1|	62867|	33.25|
+|6|	casual|	303857|	1|	79775|	27.48|
+|5|	casual|	263642|	1|	92569|	24.88|
+|4|	casual|	242761|	1|	98489|	24.44|
+|3|	casual|	239914|	1|	64171|	25.24|
+|2|	casual|	228842|	1|	83382|	27.94|
+
+<img src="https://github.com/DanielPH9/Cyclistic-Capstone-Project/blob/main/rides_per_weekday.png">
+
+We can see that annual members use more the bikes during weekdays (Monday to Friday), while casual users use more the bikes during the weekends, and for longer periods of time.
+
+Finally, let's visualize in a map what are the most popular pick-up points for casual users:
+
+```SQL
+SELECT 
+  MAX(start_station_name) AS station_name,
+  start_lat,
+  start_lng,
+  COUNT(ride_id) AS num_rides,
+  COUNTIF(member_casual = "member") AS rides_by_members,
+  COUNTIF(member_casual = "casual") AS rides_by_casuals
+FROM city_bike_dataset_capstone.data_2023
+GROUP BY start_lat, start_lng
+ORDER BY num_rides DESC
+LIMIT 2000
+```
+
+<img src="https://github.com/DanielPH9/Cyclistic-Capstone-Project/blob/main/rides_per_coordinates.png">
+
+In the previous map we can visualize the started locations of the rides. Some features of the map are:
+* Size of the Points: it is proportional to the number of rides initiated in those geographic coordinates. 
+* Color: it indicates the percentage of rides initiated by casual users (blue indicates more than 50% of trips are initiated by casual users).
+* Arrow: it indicates the most popular starting point for casual users, that corresponds to the station "Streeter Dr & Grand Ave".
+
+In general, we can see that the stations that are closer to the coast are more popular among the casual users. Those locations away from the city are dominated by casual users as well, but from the size of the points we conclude that the number of users is quite small.
+
+## Key Findings:
+In this project, our task was to study how do annual members and casual riders use Cyclistic bikes differently.
+After analyzing the provided data of 2023 of Cyclistic, we found that:
+* Almost 64% of the rides were made by annual members.
+* Casual users prefer electric bikes over classic and docked bikes, while annual members equally prefer electric and classic bikes.
+* The docked bikes are not very popular, since they were only used by casual users, and in less than 4% of their rides.
+* Both casual users and annual members prefer using the bikes between April and November.
+* Casual users use the bikes for longer periods of time.
+* Casual users use more the bikes during the weekends, while annual members use them more from Monday to Friday.
+* "Streeter Dr & Grand Ave" is the station where more rides started, and over 70% were started by casual users.
+
+## Recomendations:
+My top three recomendations are:
+* The marketing campaign should be made between the months of April and November, especially during july and august.
+* The marketing campaign should be made closer to the coast for larger visibility of casual users. 
+* Offer a discount for members using the bikes during the weekend, and for longer periods of time. This should be an incentive for the casual users to become annual members.
