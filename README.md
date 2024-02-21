@@ -218,8 +218,8 @@ FROM
 ) AS t1
 WHERE t1.ride_length > 0
 
-</details>
 ```
+</details>
 
 #### Observations: 
 * All possible duplicate values were removed using 'DISTINCT ride_id' when querying the table containing the union of the data of all months.
