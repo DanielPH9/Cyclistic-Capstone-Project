@@ -241,5 +241,11 @@ FROM city_bike_dataset_capstone.data_2023
 GROUP BY member_casual
 ```
 
+##### Output: 
+
+| member_casual | total_rides | shortest_ride | longest_ride | average_ride_duration |
+|---------------|-------------|---------------|--------------|-----------------------|
+| member | 3660698 | 0 | 1559 | 12.037 |
+| casual| 2059179 | 0 | 98489 | 27.76 |
 
 
